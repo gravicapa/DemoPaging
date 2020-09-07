@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище NewsDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Author" Type="ntext" />
+    <Property Name="Title" Type="ntext" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="PublishedAt" Type="datetime" />
+    <Property Name="Url" Type="ntext" />
+    <Property Name="UrlToImage" Type="ntext" />
+    <Property Name="SourceId" Type="int" />
+    <Property Name="Page" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Source">
+    <Key>
+      <PropertyRef Name="Idx" />
+    </Key>
+    <Property Name="Idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="ntext" />
+    <Property Name="Name" Type="ntext" />
+  </EntityType>
+  <Association Name="FK_News_ToSource">
+    <End Role="Source" Type="Self.Source" Multiplicity="0..1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Source">
+        <PropertyRef Name="Idx" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="SourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище NewsDBModelContainer">
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Source" EntityType="Self.Source" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_News_ToSource" Association="Self.FK_News_ToSource">
+      <End Role="Source" EntitySet="Source" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

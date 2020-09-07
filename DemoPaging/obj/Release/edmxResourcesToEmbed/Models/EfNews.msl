@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище NewsDBModelContainer" CdmEntityContainer="NewsDBEntities">
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="NewsDBModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="UrlToImage" ColumnName="UrlToImage" />
+          <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Source">
+      <EntityTypeMapping TypeName="NewsDBModel.Source">
+        <MappingFragment StoreEntitySet="Source">
+          <ScalarProperty Name="Idx" ColumnName="Idx" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

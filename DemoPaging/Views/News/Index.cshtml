@@ -1,0 +1,26 @@
+﻿@model DemoPaging.Models.IndexViewModel
+@using DemoPaging.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table class="table">
+    <tr>
+        <td>Preview</td>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Author</td>
+    </tr>
+    @foreach (var item in Model.News)
+    {
+        <tr>
+            <td><img width="300" height="200" src="@item.UrlToImage" /></td>
+            <td><a href=@item.Url>@item.Title</a></td>
+            <td>@item.Description</td>
+            <td>@item.Author</td>
+        </tr>
+    }
+</table>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>
